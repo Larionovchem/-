@@ -3,11 +3,9 @@ import pygame_menu
 
 
 def set_difficulty(value, difficulty):
-    # Do the job here !
     pass
 
 def start_the_game():
-    # Do the job here !
     pass
 
 menu = pygame_menu.Menu(300, 400, 'Welcome', theme=pygame_menu.themes.THEME_BLUE)

@@ -11,5 +11,6 @@ BLACK = (0, 0, 0)
 BLUE = (0, 0, 255)
 GREY = (128,128,128)
 
-CROWN = pygame.transform.scale(pygame.image.load('C:/Users/zaxgl/Desktop/asa/crown.png'), (44, 25))
-JABA = pygame.transform.scale(pygame.image.load('D:/браузер/jaba.png'), (100, 100))
+CROWN = pygame.transform.scale(pygame.image.load('crown.png'), (44, 25))
+JABA = pygame.transform.scale(pygame.image.load('Wolf.png'), (80, 80))
+SHEEP = pygame.transform.scale(pygame.image.load('Sheep.png'), (80, 80))
