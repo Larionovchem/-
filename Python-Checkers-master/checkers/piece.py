@@ -1,33 +1,48 @@
-from .constants import RED, WHITE, SQUARE_SIZE, GREY, CROWN, JABA, SHEEP
+from .constants import SQUARE_SIZE, WOLF, SHEEP
 import pygame
 
 class Piece:
-    PADDING = 15
-    OUTLINE = 2
+    """
+    Задаёт доску и объекты на ней
+
+        Атрибуты:
+        ---------
+        PADDING : int
+            Создаёт двумерный список, содержащий данные о всех фишках
+        OUTLINE : int
+            Количество фишек овец
+        row : int
+            Строки
+        col : int
+            Столбцы
+        color : int
+            Условный цвет фишки
+        x : int
+            Координата по ОX
+        y : int
+            Координата по ОY
+
+    """
 
     def __init__(self, row, col, color):
+        """ Инициализация пакета"""
         self.row = row
         self.col = col
         self.color = color
-        self.king = False
         self.x = 0
         self.y = 0
         self.calc_pos()
 
     def calc_pos(self):
+        """Вычисляет центр позиции фишки по столбцу (col) и строке (row)"""
         self.x = SQUARE_SIZE * self.col + SQUARE_SIZE // 2
         self.y = SQUARE_SIZE * self.row + SQUARE_SIZE // 2
 
-    def make_king(self):
-        self.king = True
-    
+
     def draw(self, win):
-        radius = SQUARE_SIZE//2 - self.PADDING
-        pygame.draw.circle(win, GREY, (self.x, self.y), radius + self.OUTLINE)
-        pygame.draw.circle(win, self.color, (self.x, self.y), radius)
-        win.blit(JABA, (self.x - JABA.get_width()//2, self.y - JABA.get_height()//2))
-        if self.king:
-            win.blit(CROWN, (self.x - CROWN.get_width()//2, self.y - CROWN.get_height()//2))
+        """Рисует фишки с иконками"""
+        win.blit(WOLF, (self.x - WOLF.get_width() // 2, self.y - WOLF.get_height() // 2))
+        win.blit(SHEEP, (self.x - WOLF.get_width() // 2, self.y - WOLF.get_height() // 2))
 
     def move(self, row, col):
         self.row = row

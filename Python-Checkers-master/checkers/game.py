@@ -1,5 +1,5 @@
 import pygame
-from .constants import RED, WHITE, BLUE, SQUARE_SIZE
+from .constants import BLACK, WHITE, LIGHT_GREEN, SQUARE_SIZE
 from checkers.board import Board
 
 class Game:
@@ -15,7 +15,7 @@ class Game:
     def _init(self):
         self.selected = None
         self.board = Board()
-        self.turn = RED
+        self.turn = BLACK
         self.valid_moves = {}
 
     def winner(self):
@@ -43,9 +43,9 @@ class Game:
         piece = self.board.get_piece(row, col)
         if self.selected and piece == 0 and (row, col) in self.valid_moves:
             self.board.move(self.selected, row, col)
-            skipped = self.valid_moves[(row, col)]
+            '''skipped = self.valid_moves[(row, col)]
             if skipped:
-                self.board.remove(skipped)
+                self.board.remove(skipped)'''
             self.change_turn()
         else:
             return False
@@ -56,12 +56,12 @@ class Game:
     def draw_valid_moves(self, moves):
         for move in moves:
             row, col = move
-            pygame.draw.circle(self.win, BLUE, (col * SQUARE_SIZE + SQUARE_SIZE//2, row * SQUARE_SIZE + SQUARE_SIZE//2), 15)
+            pygame.draw.circle(self.win, LIGHT_GREEN, (col * SQUARE_SIZE + SQUARE_SIZE//2, row * SQUARE_SIZE + SQUARE_SIZE//2), 15)
 
 
     def change_turn(self):
         self.valid_moves = {}
-        if self.turn == RED:
+        if self.turn == BLACK:
             self.turn = WHITE
         else:
-            self.turn = RED
+            self.turn = BLACK
